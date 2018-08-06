@@ -35,7 +35,27 @@ stdin.addListener("data", (txt) => {
       return c;
   };
 
-  console.log(div(2, 0));
+function calculate(a, b, op){
+  switch (op){
+      case `+`:
+        console.log(sum(a,b));
+        break;
+      case `-`:
+        console.log(dif(a,b));
+        break;
+      case `*`:
+        console.log(mul(a,b));
+        break;
+      case `/`:
+        console.log(div(a,b));
+        break;
+      default: console.log("Wrong operation!");
+
+  }
+}
+
+calculate(12, 4, "*");
+
 
 
 
