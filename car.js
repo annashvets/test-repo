@@ -9,7 +9,9 @@ class Car extends Vehicle {
 
     transportPeople() {
         console.log(`I am starting transporting passengers`);
+
     }
 }
+
 
 module.exports = Car;
