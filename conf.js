@@ -5,7 +5,13 @@ exports.config = {
     capabilities: {
         browserName: 'firefox',
     },
-    onPrepare: function(){
+    params: {
+        calc: {
+          first: 1,
+          second: 2
+        }
+      },
+      onPrepare: function(){
         console.log("Test execution started");
     },
 }
