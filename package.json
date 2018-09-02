@@ -1,8 +1,12 @@
 {
-    "name": "MyFirstApp",
+    "name": "Test_app",
     "version": "1.0.0",
     "description": "",
-    "author": "",
+    "author": "eleks",
+    "main": "conf.js",
     "license": "ISC",    
-    "dependencies": {}
+    "dependencies": {},
+    "devDependencies": {
+      "protractor": "5.4.0"
+    }
   }
