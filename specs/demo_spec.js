@@ -9,7 +9,7 @@ describe('angularjs homepage', function() {
       await browser.sleep(5000);
       await loginPage.clickLoginButton();
       await browser.sleep(5000);
-     let adminPage = await loginPage.login("username","password");
+     let adminPage = await loginPage.login("username", "password");
      await browser.sleep(5000);
      await adminPage.open();
      await browser.sleep(5000);
