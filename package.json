@@ -1,8 +1,15 @@
 {
-    "name": "MyFirstApp",
-    "version": "1.0.0",
-    "description": "",
-    "author": "",
-    "license": "ISC",    
-    "dependencies": {}
-  }
+  "name": "test-project",
+  "version": "1.0.0",
+  "description": "Test automation framework based on Protractor",
+  "main": "config.js",
+  "license": "ISC",
+  "directories": {
+    "test": "specs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "protractor": "^5.4.0"
+  },
+  "author": "Anna Shvets"
+}
