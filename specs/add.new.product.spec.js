@@ -4,7 +4,7 @@ let AdminPage = require("../page_objects/admin.page");
 
 
 
-describe("Add new product", function(){
+xdescribe("Add new product", function(){
    it("add new product", async function(){
         let loginPage = new LoginPage();
         let headerPage = new Header();
