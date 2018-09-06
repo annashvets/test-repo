@@ -1,17 +1,15 @@
 let LoginPage = require("../page_objects/login.page");
 
 
-xdescribe("Login suite", function(){
+describe("Login suite", function(){
     it("Unsuccessful login without credentials", async function(){
         let loginPage = new LoginPage();
 
         await loginPage.open();
         await loginPage.clickLoginButton();
-        await browser.sleep(5000);
         await loginPage.clickSignInnButton();
-        await browser.sleep(5000);
 
-        expect(element(by.css('.iframe-wrap .login-button')).isEnabled()).toEuqal(false, "Error - sign in button is enabled");
+        expect(element(by.css('.iframe-wrap .login-button')).isEnabled()).toBe(false, "Error - sign in button is enabled");
 
     });
 

@@ -1,6 +1,6 @@
 let LoginPage = require("../page_objects/login.page");
 
-xdescribe("Login suite", function(){
+describe("Login suite", function(){
     it("Unsuccessful login without password", async function(){
         let loginPage = new LoginPage();
 

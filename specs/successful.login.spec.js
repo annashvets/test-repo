@@ -1,8 +1,11 @@
 let LoginPage = require("../page_objects/login.page");
 
 
-xdescribe("Login suite", function(){
+describe("Login suite", function(){
    it("Successful login", async function(){
+       allure.createStep('report 1', async function(){
+           browser.url('/login');
+       
         let loginPage = new LoginPage();
 
         await loginPage.open();
@@ -11,6 +14,7 @@ xdescribe("Login suite", function(){
         await loginPage.clickSignInnButton();
         expect(element(by.css(".user-data .user-name")).getText()).toEqual("Anna Shvets");
     
+        })
     });
 
 });

@@ -1,7 +1,7 @@
 let LoginPage = require("../page_objects/login.page");
 
 
-xdescribe("Login suite", function(){
+describe("Login suite", function(){
    it("Successful login", async function(){
         let loginPage = new LoginPage();
 
