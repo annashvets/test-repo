@@ -1,8 +1,20 @@
 {
-    "name": "MyFirstApp",
-    "version": "1.0.0",
-    "description": "",
-    "author": "",
-    "license": "ISC",    
-    "dependencies": {}
-  }
+  "name": "test-project",
+  "version": "1.0.0",
+  "description": "Test automation framework based on Protractor",
+  "main": "config.js",
+  "license": "ISC",
+  "directories": {
+    "test": "specs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "allure-commandline": "^2.7.0",
+    "jasmine-allure-reporter": "^1.0.2",
+    "protractor": "^5.4.0"
+  },
+  "author": "Anna Shvets",
+  "scripts": {
+    "posttest": "allure generate allure-results --clean -o allure-report"
+}
+}
