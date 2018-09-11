@@ -1,3 +1,6 @@
+let Input = require("../controls/input");
+let Button = require("../controls/button");
+
 let loginButtonLocator = ".panel-body .login-button";
 let emailInputLocator = "#email";
 let passInputLocator = "#userPassword";
@@ -13,44 +16,39 @@ class LoginPage{
     }
 
     async open(){
-        await browser.get('http://eds_university.eleks.com/');
+      await browser.get('http://eds_university.eleks.com/');
     }
+    
     getLoginButton(){
-        return element(by.css(loginButtonLocator));
+        return new Button(element(by.css(loginButtonLocator)), "Login button");
     }
-    async clickLoginButton(){
-        await  this.getLoginButton().click();
+    getEmailInput(){
+        return new Input(element(by.css(emailInputLocator)), "Email input");
+    }
+    getPassInput(){
+        return new Input(element(by.css(passInputLocator)), "Password input");
+    }
+
+    getSignInButton(){
+        return new Button(element(by.css(signInButtonLocator)), "Sign in button");
     }
 
     getErrorEmailRequired(){
-        return element(by.css(errorEmailRequiredLocator)).getText();
+        return element(by.css(errorEmailRequiredLocator));
     }
-
-    getEmailInput(){
-        return element(by.css(emailInputLocator));
-    }
-    getPassInput(){
-        return element(by.css(passInputLocator));
-    }
-    async login(email, pass){
-        await this.getEmailInput().sendKeys(email);
-        await this.getPassInput().sendKeys(pass);
-    }
-
-
-    getSignInButton(){
-        return element(by.css(signInButtonLocator));
-    }
-    async clickSignInnButton(){
-        await  this.getSignInButton().click();
-    }
-
 
     getErrorToastMessage(){
-        return element(by.css(errorToastMessageLocator)).getText();
+        return element(by.css(errorToastMessageLocator));
     }
 
-}
+    async login(email, pass){
+        await allure.createStep("Click on Login button", async() => await this.getLoginButton().click())();
+        await allure.createStep(`Enter email ${email}`, async() => await this.getEmailInput().sendKeys(email))();
+        await allure.createStep(`Enter pass ${pass}`, async() => await this.getPassInput().sendKeys(pass))();
+        await allure.createStep("Click on Sign in button", async() => await this.getSignInButton().click())();
+    }   
 
+
+}
 
 module.exports = LoginPage;

@@ -12,17 +12,14 @@ describe("Admin page suite", function(){
         let adminPage = new AdminPage();
 
         await loginPage.open();
-        await loginPage.clickLoginButton();
         await loginPage.login("anna.shvets@eleks.com", "5HmDL8CYjSTy");
-        await loginPage.clickSignInnButton();
-
         await browser.sleep(5000);
 
         await headerPage.clickAdminButton();
         await browser.sleep(5000);
         await adminPage.clickAddNewProductButton();
         await browser.sleep(5000);
-        await adminPage.getProductNameInput().sendKeys("my-test-product7");
+        await adminPage.getProductNameInput().sendKeys("my-test-product8");
         await browser.sleep(5000);
         await adminPage.clickProductFamilyList();
         await browser.sleep(5000);
@@ -32,7 +29,7 @@ describe("Admin page suite", function(){
         await browser.sleep(5000);
         await adminPage.clickSaveProductButton();
         await browser.sleep(2000);
-        expect(adminPage.getFirstPreviewItem()).toEqual("my-test-product7");
+        expect(adminPage.getFirstPreviewItem().getText()).toEqual("my-test-product8");
     
     });
 

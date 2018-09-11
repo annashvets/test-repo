@@ -8,12 +8,9 @@ describe("Login suite", function(){
         let headerPage = new HeaderPage();
         await loginPage.open();
         await browser.sleep(5000);
-        
-        await loginPage.clickLoginButton();
         await loginPage.login("anna.shvets@eleks.com", "5HmDL8CYjSTy");
-        await loginPage.clickSignInnButton();
         await browser.sleep(5000);
-        expect(headerPage.getUserName()).toEqual("Anna Shvets");
+        expect(headerPage.getUserName().getText()).toEqual("Anna Shvets");
     
     });
 

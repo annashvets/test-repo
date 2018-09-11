@@ -1,3 +1,6 @@
+let Input = require("../controls/input");
+let Button = require("../controls/button");
+
 let addNewProductButtonLocator = ".section__left .form-group a span:nth-child(2)";
 let productNameInputLocator = "#product-name";
 let productFamilyListLocator = ".product-family-list .dropdown";
@@ -13,44 +16,43 @@ class AdminPage{
         
     }
     getAddNewProductButton(){
-        return element(by.css(addNewProductButtonLocator));
+        return new Button(element(by.css(addNewProductButtonLocator)), "Add new product button");
     }
-    async clickAddNewProductButton(){
-        await this.getAddNewProductButton().click();
-    }
-
     getProductNameInput(){
-        return element(by.css(productNameInputLocator));
+        return new Input(element(by.css(productNameInputLocator)), "Name input");
     }
     getProductFamilyList(){
-        return element(by.css(productFamilyListLocator));
+        return new Button(element(by.css(productFamilyListLocator)), "Family list drop-down");
     }
-
-    async clickProductFamilyList(){
-        await this.getProductFamilyList().click();
-    }
-
     getdropDownSearchInput(){
-        return element(by.css(dropDownSearchInputLocator));
+        return new Input(element(by.css(dropDownSearchInputLocator)), "Search input");
     }
 
     getDropDownItem(){
-        return element(by.css(dropDownItemLocator));
+        return new Button(element(by.css(dropDownItemLocator)), "Drop-down item");
     }
-    async selectDropDownItem(){
-        await this.getDropDownItem().click();
-    }
-
     getSaveProductButton(){
-        return element(by.css(saveProductButtonLocator));
+        return new Button(element(by.css(saveProductButtonLocator)), "Save button");
     }
-    async clickSaveProductButton(){
-        await this.getSaveProductButton().click();
-    }
-
     getFirstPreviewItem(){
         return element(by.css(firstPreviewItemLocator)).getText();
     }
+
+    async clickAddNewProductButton(){
+        await allure.createStep("Click on 'Add new product' button", async() => await this.getAddNewProductButton().click())();
+    }
+
+    async clickProductFamilyList(){
+        await allure.createStep("Open 'Product family' drop-down list", async() => await this.getProductFamilyList().click())();
+    }
+
+    async selectDropDownItem(){
+        await allure.createStep("Select drop-down item", async() => await this.getDropDownItem().click())();
+    }
+    async clickSaveProductButton(){
+        await allure.createStep("Click on 'Save' button", async() => await this.getSaveProductButton().click())();
+    }
+
 }
 
 module.exports = AdminPage;

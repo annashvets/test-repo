@@ -6,13 +6,11 @@ describe("Login suite", function(){
         let loginPage = new LoginPage();
 
         await loginPage.open();
-        await loginPage.clickLoginButton();
-        await browser.sleep(5000);
         await loginPage.login("", "5HmDL8CYjSTy");
-        await loginPage.clickSignInnButton();
         await browser.sleep(5000);
-        expect(loginPage.getErrorEmailRequired()).toBe("Email is required");
-        expect(loginPage.getSignInButton().isEnabled()).toBe(false, "Error - sign in button is enabled");
+        expect(loginPage.getErrorEmailRequired().getText()).toBe("Email is required");
+        await browser.sleep(5000);
+        expect(loginPage.getSignInButton().isEnabled()).toEqual(false);
 
     });
 

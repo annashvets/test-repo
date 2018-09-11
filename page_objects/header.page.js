@@ -1,3 +1,6 @@
+let Input = require("../controls/input");
+let Button = require("../controls/button");
+
 let adminButtonLocator = "#navbar li:nth-child(2) a";
 let productsButtonLocator = "#navbar li:nth-child(1) a";
 let userNameLocator = ".user-data .user-name";
@@ -9,23 +12,23 @@ class Header {
     }
 
     getAdminButton(){
-        return element(by.css(adminButtonLocator));
+        return new Button(element(by.css(adminButtonLocator)),"Administartion button");
     }
-    async clickAdminButton(){
-        await this.getAdminButton().click();
-    }
-
-
     getProductsButton(){
         return element(by.css(productsButtonLocator));
     }
+    getUserName(){
+        return element(by.css(userNameLocator));
+    }
+    async clickAdminButton(){
+        await allure.createStep("Click on Administration button", async() => await this.getAdminButton().click())();
+    }
+
     async clickProductsButton(){
         await this.getAdminButton().click();
     }
 
-    getUserName(){
-        return element(by.css(userNameLocator)).getText();
-    }
+   
 
 }
 
