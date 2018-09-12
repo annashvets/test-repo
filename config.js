@@ -14,7 +14,7 @@ exports.config = {
       defaultTimeoutInterval: 120000
     },
 
-    restartBrowserBetweenTests: true,
+    //restartBrowserBetweenTests: true,
 
     onPrepare: function() {
       jasmine.getEnv().addReporter(new AllureReporter({

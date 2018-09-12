@@ -18,8 +18,13 @@ class Header {
         return element(by.css(productsButtonLocator));
     }
     getUserName(){
-        return element(by.css(userNameLocator));
+        return new Button(element(by.css(userNameLocator)), "Get user name");
     }
+
+    returnUserName(){
+        return this.getUserName().getText();
+    }
+
     async clickAdminButton(){
         await allure.createStep("Click on Administration button", async() => await this.getAdminButton().click())();
     }

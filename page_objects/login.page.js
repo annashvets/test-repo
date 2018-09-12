@@ -34,11 +34,19 @@ class LoginPage{
     }
 
     getErrorEmailRequired(){
-        return element(by.css(errorEmailRequiredLocator));
+        return new Input(element(by.css(errorEmailRequiredLocator)), "Get email required error");
     }
 
     getErrorToastMessage(){
-        return element(by.css(errorToastMessageLocator));
+        return new Input(element(by.css(errorToastMessageLocator)), "Get toast error - incorrect cred");
+    }
+
+    returtErrorToastMessage(){
+        return this.getErrorToastMessage().getText();
+    }
+
+    returnErrorEmailRequired(){
+        return this.getErrorEmailRequired().getText();
     }
 
     async login(email, pass){
@@ -48,7 +56,9 @@ class LoginPage{
         await allure.createStep("Click on Sign in button", async() => await this.getSignInButton().click())();
     }   
 
-
+    async checkSignInButton(){
+        await allure.createStep("Check if Sign in button is enabled", async() => await this.getSignInButton().isEnabled())();
+    }
 }
 
 module.exports = LoginPage;

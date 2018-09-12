@@ -1,7 +1,12 @@
 let LoginPage = require("../page_objects/login.page");
 
 
-xdescribe("Login suite", function(){
+describe("Login suite", function(){
+
+    beforeAll(function () {
+        browser.restart();
+      });
+
     it("Unsuccessful login without credentials", async function(){
         let loginPage = new LoginPage();
 
@@ -9,7 +14,7 @@ xdescribe("Login suite", function(){
         await loginPage.login("", "");
         await browser.sleep(5000);
 
-        expect(loginPage.getSignInButton().isEnabled()).toBe(false, "Error - sign in button is enabled");
+        expect(loginPage.checkSignInButton()).toBe(false);
 
     });
 

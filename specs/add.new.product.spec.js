@@ -2,9 +2,11 @@ let LoginPage = require("../page_objects/login.page");
 let Header = require("../page_objects/header.page");
 let AdminPage = require("../page_objects/admin.page");
 
-
-
 describe("Admin page suite", function(){
+
+    beforeAll(function () {
+        browser.restart();
+      });
 
    it("Add new product TC", async function(){
         let loginPage = new LoginPage();
@@ -19,7 +21,7 @@ describe("Admin page suite", function(){
         await browser.sleep(5000);
         await adminPage.clickAddNewProductButton();
         await browser.sleep(5000);
-        await adminPage.getProductNameInput().sendKeys("my-test-product8");
+        await adminPage.getProductNameInput().sendKeys("my-test-product9");
         await browser.sleep(5000);
         await adminPage.clickProductFamilyList();
         await browser.sleep(5000);
@@ -29,7 +31,7 @@ describe("Admin page suite", function(){
         await browser.sleep(5000);
         await adminPage.clickSaveProductButton();
         await browser.sleep(2000);
-        expect(adminPage.getFirstPreviewItem().getText()).toEqual("my-test-product8");
+        expect(adminPage.returnFirstPreviewItem()).toEqual("my-test-product9");
     
     });
 

@@ -8,9 +8,12 @@ class BaseControl {
     async click() {
         await this.protractorElement.click();
     }
+
+    getText() {
+        return this.protractorElement.getText();
+    }
     
 }
-
 
 
 module.exports = BaseControl;

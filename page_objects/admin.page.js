@@ -35,7 +35,11 @@ class AdminPage{
         return new Button(element(by.css(saveProductButtonLocator)), "Save button");
     }
     getFirstPreviewItem(){
-        return element(by.css(firstPreviewItemLocator)).getText();
+        return new Button(element(by.css(firstPreviewItemLocator)), "Get first preview item");
+    }
+    
+    returnFirstPreviewItem(){
+       return this.getFirstPreviewItem().getText();
     }
 
     async clickAddNewProductButton(){
