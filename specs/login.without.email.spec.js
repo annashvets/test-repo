@@ -12,9 +12,7 @@ describe("Login suite", function(){
 
         await loginPage.open();
         await loginPage.login("", "5HmDL8CYjSTy");
-        await browser.sleep(5000);
         expect(loginPage.returnErrorEmailRequired()).toBe("Email is required");
-        await browser.sleep(5000);
         expect(loginPage.checkSignInButton()).toEqual(false);
 
     });

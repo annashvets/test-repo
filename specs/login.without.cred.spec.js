@@ -12,7 +12,6 @@ describe("Login suite", function(){
 
         await loginPage.open();
         await loginPage.login("", "");
-        await browser.sleep(5000);
 
         expect(loginPage.checkSignInButton()).toBe(false);
 

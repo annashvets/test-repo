@@ -10,9 +10,7 @@ describe("Login suite", function(){
         
 
         await loginPage.open();
-        await browser.sleep(5000);
         await loginPage.login("anna.shvets@eleks.com", "");
-        await browser.sleep(5000);
         expect(loginPage.checkSignInButton()).toBe(false);
 
     });

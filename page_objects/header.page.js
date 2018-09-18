@@ -5,14 +5,16 @@ let adminButtonLocator = "#navbar li:nth-child(2) a";
 let productsButtonLocator = "#navbar li:nth-child(1) a";
 let userNameLocator = ".user-data .user-name";
 
+let EC = protractor.ExpectedConditions;
+
+
 class Header {
     constructor(){
     
-        browser.waitForAngularEnabled(false);
     }
 
     getAdminButton(){
-        return new Button(element(by.css(adminButtonLocator)),"Administartion button");
+        return new Button(element(by.css(adminButtonLocator)),"Administration button");
     }
     getProductsButton(){
         return element(by.css(productsButtonLocator));
@@ -21,11 +23,18 @@ class Header {
         return new Button(element(by.css(userNameLocator)), "Get user name");
     }
 
-    returnUserName(){
-        return this.getUserName().getText();
+    async returnUserName(){
+        let waiter = $(".user-data .user-name");
+        let isClickable = EC.elementToBeClickable(waiter);
+        await browser.wait(isClickable, 5000);
+        await allure.createStep("Checking user name", async() => await this.getUserName().getText())();
     }
 
     async clickAdminButton(){
+        await browser.waitForAngularEnabled(false);
+        let waiter = $("#navbar li:nth-child(2) a");
+        let isClickable = EC.elementToBeClickable(waiter);
+        await browser.wait(isClickable, 5000);
         await allure.createStep("Click on Administration button", async() => await this.getAdminButton().click())();
     }
 

@@ -4,9 +4,11 @@ let AdminPage = require("../page_objects/admin.page");
 
 describe("Admin page suite", function(){
 
-    beforeAll(function () {
+    /*beforeAll(function () {
+        console.log("restarting browser");
         browser.restart();
-      });
+        console.log("complete restart");
+      });*/
 
    it("Add new product TC", async function(){
         let loginPage = new LoginPage();
@@ -15,22 +17,15 @@ describe("Admin page suite", function(){
 
         await loginPage.open();
         await loginPage.login("anna.shvets@eleks.com", "5HmDL8CYjSTy");
-        await browser.sleep(5000);
-
-        await headerPage.clickAdminButton();
-        await browser.sleep(5000);
+        await headerPage.clickAdminButton();  
         await adminPage.clickAddNewProductButton();
-        await browser.sleep(5000);
+        
         await adminPage.getProductNameInput().sendKeys("my-test-product9");
-        await browser.sleep(5000);
         await adminPage.clickProductFamilyList();
-        await browser.sleep(5000);
         await adminPage.getdropDownSearchInput().sendKeys("test product family");
-        await browser.sleep(5000);
         await adminPage.selectDropDownItem();
-        await browser.sleep(5000);
         await adminPage.clickSaveProductButton();
-        await browser.sleep(2000);
+    
         expect(adminPage.returnFirstPreviewItem()).toEqual("my-test-product9");
     
     });

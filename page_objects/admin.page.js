@@ -10,11 +10,16 @@ let saveProductButtonLocator = "#saveProductAdd";
 let firstPreviewItemLocator = ".preview-list li:nth-child(1) a";
 
 
+let EC = protractor.ExpectedConditions;
+let waiter = $(".section__left .form-group a span:nth-child(2)");
+let isClickable = EC.elementToBeClickable(waiter);
+
 
 class AdminPage{
-    constructor(){
-        
+    constructor(){ 
+   
     }
+
     getAddNewProductButton(){
         return new Button(element(by.css(addNewProductButtonLocator)), "Add new product button");
     }
@@ -43,10 +48,12 @@ class AdminPage{
     }
 
     async clickAddNewProductButton(){
+        await browser.wait(isClickable, 5000);
         await allure.createStep("Click on 'Add new product' button", async() => await this.getAddNewProductButton().click())();
     }
 
     async clickProductFamilyList(){
+        await browser.wait(isClickable, 5000);
         await allure.createStep("Open 'Product family' drop-down list", async() => await this.getProductFamilyList().click())();
     }
 

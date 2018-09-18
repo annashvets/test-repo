@@ -11,12 +11,13 @@ exports.config = {
   
     jasmineNodeOpts: {
       showColors: true,
-      defaultTimeoutInterval: 120000
+      defaultTimeoutInterval: 120000,
+      getPageTimeout: 120000
     },
 
-    //restartBrowserBetweenTests: true,
-
     onPrepare: function() {
+
+ 
       jasmine.getEnv().addReporter(new AllureReporter({
         resultsDir: 'allure-results'
       }));
