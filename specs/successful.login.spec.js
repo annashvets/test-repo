@@ -2,7 +2,7 @@ let LoginPage = require("../page_objects/login.page");
 let HeaderPage = require("../page_objects/header.page");
 
 
-describe("Login suite", function(){
+xdescribe("Login suite", function(){
     beforeAll(function () {
      console.log("restarting browser");
        browser.restart();

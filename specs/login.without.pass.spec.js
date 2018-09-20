@@ -1,6 +1,6 @@
 let LoginPage = require("../page_objects/login.page");
 
-describe("Login suite", function(){
+xdescribe("Login suite", function(){
     beforeAll(function () {
         browser.restart();
       });
