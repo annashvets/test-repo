@@ -18,7 +18,7 @@ class LoginPage{
     async open(){
       await browser.get('http://eds_university.eleks.com/');
     }
-    
+ 
     getLoginButton(){
         return new Button(element(by.css(loginButtonLocator)), "Login button");
     }

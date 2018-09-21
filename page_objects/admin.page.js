@@ -13,11 +13,13 @@ let deleteButtonLocator = ".section-title__details-actions .gds-delete-icon";
 let deleteButtonConfirmLocator = ".gds-confirmation-modal .modal-footer .gds-ml-1";
 let noResultsFoundLocator = ".preview-list__header .col-md-12";
 let successProductDeletePopupLocator = "#toast-container .toast-message";
-
+let nameRequiredErrorLocator = ".section-title__details .validation-message";
+let productFamilyRequiredError = "#change-product-family-list + .validation-message";
+let editButtonLocator = ".section__right .section-title__details .gds-edit-icon";
+let successProductEditLocator = "#toast-container .toast-success"; 
 
 let EC = protractor.ExpectedConditions;
-let waiter = $(".section__left .form-group a span:nth-child(2)");
-let isClickable = EC.elementToBeClickable(waiter);
+
 
 
 class AdminPage{
@@ -28,6 +30,20 @@ class AdminPage{
     getSuccessProductDeletePopup(){
         browser.wait(EC.visibilityOf($('#toast-container .toast-message')), 5000);
         return new Button(element(by.css(successProductDeletePopupLocator)), "Success product delete popup message");
+    }
+
+
+    getSuccessProductEditPopup(){
+        browser.wait(EC.visibilityOf($('#toast-container .toast-success')), 5000);
+        return new Button(element(by.css(successProductEditLocator)), "Success product edit popup message");
+    }
+
+    getNameErrorRequired(){
+        return new Input(element(by.css(nameRequiredErrorLocator)), "Empty Name field validation error");
+    }
+
+    getProductFamilyErrorRequired(){
+        return new Input(element(by.css(productFamilyRequiredError)), "Empty Product family drop-down validation error");
     }
 
     getNoResultsFound(){
@@ -50,7 +66,7 @@ class AdminPage{
     getdropDownSearchInput(){
         return new Input(element(by.css(dropDownSearchInputLocator)), "Search input");
     }
-
+    
     getDropDownItem(){
         return new Button(element(by.css(dropDownItemLocator)), "Drop-down item");
     }
@@ -67,9 +83,13 @@ class AdminPage{
     }
     
     getDeleteButton(){
-        return new Button(element(by.css(deleteButtonLocator)), "Delete product button")
+        return new Button(element(by.css(deleteButtonLocator)), "Delete product button");
     }
     
+    getEditButton(){
+        return new Button(element(by.css(editButtonLocator)), "Edit product button");
+    }
+
     returnNoResultsFound(){
         return this.getNoResultsFound().getText();
     }
@@ -84,17 +104,29 @@ class AdminPage{
         return this.getSuccessProductDeletePopup().getText();
     }
 
+    returnSuccessProductEditPopup(){
+        return this.getSuccessProductEditPopup().getText();
+    }
+
+    returnNameErrorRequired(){
+        return this.getNameErrorRequired().getText();
+    }
+
+    returnProductFamilyErrorRequired(){
+        return this.getProductFamilyErrorRequired().getText();
+    }
+
     async enterProductName(productName){
       await this.getProductNameInput().sendKeys(productName);
     }
 
     async clickAddNewProductButton(){
-        await browser.wait(isClickable, 5000);
+        await browser.wait(EC.elementToBeClickable($('.section__left .form-group a span:nth-child(2)')), 5000);
         await allure.createStep("Click on 'Add new product' button", async() => await this.getAddNewProductButton().click())();
     }
 
     async clickProductFamilyList(){
-        await browser.wait(isClickable, 5000);
+        await browser.wait(EC.elementToBeClickable($('.product-family-list .dropdown')), 5000);
         await allure.createStep("Open 'Product family' drop-down list", async() => await this.getProductFamilyList().click())();
     }
 
@@ -110,8 +142,11 @@ class AdminPage{
         await allure.createStep("Select created product from the list", async() => await this.getFirstPreviewItem().click())();
     }
     async clickDeleteButton(){
-
         await allure.createStep("Click on delete button", async() => await this.getDeleteButton().click())();
+    }
+
+    async clickEditButton(){
+        await allure.createStep("Click on delete button", async() => await this.getEditButton().click())();
     }
 
     async clickDeleteConfirm(){

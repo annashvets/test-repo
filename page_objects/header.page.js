@@ -22,19 +22,21 @@ class Header {
     getUserName(){
         return new Button(element(by.css(userNameLocator)), "Get user name");
     }
-
-    async returnUserName(){
-        let waiter = $(".user-data .user-name");
+ 
+    async waitForPageToBeavailable(){
+        let waiter = $("#navbar li:nth-child(2) a");
         let isClickable = EC.elementToBeClickable(waiter);
         await browser.wait(isClickable, 5000);
+    }
+
+    async returnUserName(){
+        await this.waitForPageToBeavailable();
         await allure.createStep("Checking user name", async() => await this.getUserName().getText())();
     }
 
     async clickAdminButton(){
         await browser.waitForAngularEnabled(false);
-        let waiter = $("#navbar li:nth-child(2) a");
-        let isClickable = EC.elementToBeClickable(waiter);
-        await browser.wait(isClickable, 5000);
+        await this.waitForPageToBeavailable();
         await allure.createStep("Click on Administration button", async() => await this.getAdminButton().click())();
     }
 

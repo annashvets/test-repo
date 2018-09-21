@@ -1,8 +1,8 @@
-let LoginPage = require("../page_objects/login.page");
-let HeaderPage = require("../page_objects/header.page");
+let LoginPage = require("../../page_objects/login.page");
+let HeaderPage = require("../../page_objects/header.page");
 
 
-xdescribe("Login suite", function(){
+describe("Login suite", function(){
     beforeAll(function () {
      console.log("restarting browser");
        browser.restart();
