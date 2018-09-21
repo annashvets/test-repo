@@ -14,7 +14,7 @@ describe("Admin page suite", function(){
         let loginPage = new LoginPage();
         let headerPage = new Header();
         let adminPage = new AdminPage();
-        let productName = "AnnaShvetsProductedit";
+        let productName = "AnnaShvetsProduct";
 
 
         await loginPage.open();
